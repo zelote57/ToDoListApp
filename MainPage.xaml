@@ -2,7 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoListApp.MainPage"
+             xmlns:local="clr-namespace:ToDoListApp"
              BackgroundColor="#b9d6f2">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringToColorConverter x:Key="ColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
         <StackLayout
@@ -11,25 +18,19 @@
             VerticalOptions="Start">
 
             <Label x:Name="Tarea"
-                   Padding="10" 
-                   BackgroundColor="Azure"
+                   Padding="10"                    
                    HorizontalOptions="Center" 
                    FontSize="22"                    
-                   Text="Primer Texto" TextColor="Black"/>
+                   Text="{Binding TaskName, Mode=TwoWay}"                    
+                   TextColor="{Binding ColorText, Converter = {StaticResource ColorConverter}}"/>
 
             <Label x:Name="Estatus"
-                   Padding="10" 
-                   BackgroundColor="Beige"
+                   Padding="10"                    
                    HorizontalOptions="Center" 
                    FontSize="22"                    
-                   Text="Segundo Texto" TextColor="Black"/>
-
-            <!--<Label Padding="10" 
-                   HorizontalOptions="Center" 
-                   FontSize="22" 
-                   BindingContext="{x:Reference Name=MyMainPage}" 
-                   Text="{Binding MyTitle}" TextColor="Black"/>-->
-
+                   Text="{Binding Status, Mode=TwoWay}" 
+                   TextColor="{Binding ColorText, Converter = {StaticResource ColorConverter}}"/>
+            
             <Image
                 Source="task.png"  
                 HeightRequest="80"

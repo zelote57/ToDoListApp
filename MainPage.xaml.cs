@@ -5,12 +5,24 @@ namespace ToDoListApp
     public partial class MainPage : ContentPage
     {
         public ObservableCollection<Tasks> MyTasks { get; set; }
-        //public string MyTitle { get; set; } = "Lista de Tareas";
+        
+        public Tasks MyTask { get; set; }
 
         public MainPage()
         {
-            InitializeComponent();            
-            //BindingContext = this;            
+            InitializeComponent();
+            CreateOneTask();
+            BindingContext = MyTask;
+        }
+
+        private void CreateOneTask()
+        {
+            MyTask = new Tasks()
+            {
+                TaskName = "Estudiar",
+                Status = "Pendiente",
+                ColorText = "Blue"
+            };
         }
 
         private void CreateAndLoadTaks()
@@ -45,29 +57,17 @@ namespace ToDoListApp
         {
             //DisplayAlert("Alert", "Agregado", "OK");
 
-
-            //source
-            var task = new Tasks()
+            var MyNewTask = new Tasks()
             {
                 TaskName = "Estudiar",
-                Status = "Pendiente"
+                Status = "Pendiente",
+                ColorText = "Red"
             };
 
-            //binding
-            Binding bindingTarea = new Binding();
+            MyNewTask.TaskName = "Terminar la Clase";
+            MyNewTask.Status = "Completado";
 
-            bindingTarea.Source = task;
-            bindingTarea.Path = "TaskName";
-
-            Binding bindingEstatus = new Binding();
-
-            bindingEstatus.Source = task;
-            bindingEstatus.Path = "Status";
-
-            //target
-            Tarea.SetBinding(Label.TextProperty, bindingTarea);
-
-            Estatus.SetBinding(Label.TextProperty, bindingEstatus);
+            BindingContext = MyNewTask;
 
         }
     }
