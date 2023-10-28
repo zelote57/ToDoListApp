@@ -5,11 +5,12 @@ namespace ToDoListApp
     public partial class MainPage : ContentPage
     {
         public ObservableCollection<Tasks> MyTasks { get; set; }
-        public string MyTitle { get; set; } = "Lista de Tareas";
+        //public string MyTitle { get; set; } = "Lista de Tareas";
+
         public MainPage()
         {
-            InitializeComponent();
-            BindingContext = this;            
+            InitializeComponent();            
+            //BindingContext = this;            
         }
 
         private void CreateAndLoadTaks()
@@ -37,12 +38,36 @@ namespace ToDoListApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            CreateAndLoadTaks();
+            //CreateAndLoadTaks();
         }
 
         private void AddBtn_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Alert", "Agregado", "OK");
+            //DisplayAlert("Alert", "Agregado", "OK");
+
+            //source
+            var task = new Tasks()
+            {
+                TaskName = "Estudiar",
+                Status = "Pendiente"
+            };
+
+            //binding
+            Binding bindingTarea = new Binding();
+
+            bindingTarea.Source = task;
+            bindingTarea.Path = "TaskName";
+
+            Binding bindingEstatus = new Binding();
+
+            bindingEstatus.Source = task;
+            bindingEstatus.Path = "Status";
+
+            //target
+            Tarea.SetBinding(Label.TextProperty, bindingTarea);
+
+            Estatus.SetBinding(Label.TextProperty, bindingEstatus);
+
         }
     }
 }

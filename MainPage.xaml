@@ -2,20 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ToDoListApp.MainPage"
-             x:Name="MyMainPage"
              BackgroundColor="#b9d6f2">
 
     <ScrollView>
         <StackLayout
             Spacing="25"            
             Padding="30,0"
-            VerticalOptions="Center">
+            VerticalOptions="Start">
 
-            <Label Padding="10" 
+            <Label x:Name="Tarea"
+                   Padding="10" 
+                   BackgroundColor="Azure"
+                   HorizontalOptions="Center" 
+                   FontSize="22"                    
+                   Text="Primer Texto" TextColor="Black"/>
+
+            <Label x:Name="Estatus"
+                   Padding="10" 
+                   BackgroundColor="Beige"
+                   HorizontalOptions="Center" 
+                   FontSize="22"                    
+                   Text="Segundo Texto" TextColor="Black"/>
+
+            <!--<Label Padding="10" 
                    HorizontalOptions="Center" 
                    FontSize="22" 
                    BindingContext="{x:Reference Name=MyMainPage}" 
-                   Text="{Binding MyTitle}" TextColor="Black"/>
+                   Text="{Binding MyTitle}" TextColor="Black"/>-->
 
             <Image
                 Source="task.png"  
