@@ -4,8 +4,6 @@ namespace ToDoListApp
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<Tasks> MyTasks { get; set; }
-        
         public Tasks MyTask { get; set; }
 
         public MainPage()
@@ -19,33 +17,33 @@ namespace ToDoListApp
         {
             MyTask = new Tasks()
             {
-                TaskName = "Estudiar",
+                TaskName = "Comprar Pan",
                 Status = "Pendiente",
                 ColorText = "Blue"
             };
         }
 
-        private void CreateAndLoadTaks()
-        {
-            MyTasks = new ObservableCollection<Tasks>
-            {
-                new Tasks
-                {
-                    TaskName = "Pasear al Perro",
-                    Status = "Pendiente"
-                },
-                new Tasks
-                {
-                    TaskName = "Salir a Correr",
-                    Status = "Pendiente"
-                },
-                new Tasks
-                {
-                    TaskName = "Entregar Tareas U",
-                    Status = "Completada"
-                }
-            };
-        }
+        //private void CreateAndLoadTaks()
+        //{
+        //    MyTasks = new ObservableCollection<Tasks>
+        //    {
+        //        new Tasks
+        //        {
+        //            TaskName = "Pasear al Perro",
+        //            Status = "Pendiente"
+        //        },
+        //        new Tasks
+        //        {
+        //            TaskName = "Salir a Correr",
+        //            Status = "Pendiente"
+        //        },
+        //        new Tasks
+        //        {
+        //            TaskName = "Entregar Tareas U",
+        //            Status = "Completada"
+        //        }
+        //    };
+        //}
 
         protected override void OnAppearing()
         {
@@ -55,6 +53,8 @@ namespace ToDoListApp
 
         private void AddBtn_Clicked(object sender, EventArgs e)
         {
+            //MyTask.TaskName = "Terminar la Clase";
+
             //DisplayAlert("Alert", "Agregado", "OK");
 
             var MyNewTask = new Tasks()
