@@ -17,18 +17,16 @@
             Padding="30,0"
             VerticalOptions="Start">
 
-            <Label x:Name="Tarea"
-                   Padding="10"                    
+            <Label Padding="10"                    
                    HorizontalOptions="Center" 
                    FontSize="22"                    
-                   Text="{Binding TaskName, Mode=TwoWay}"                    
+                   Text="{Binding TaskName}"                    
                    TextColor="{Binding ColorText, Converter = {StaticResource ColorConverter}}"/>
 
-            <Label x:Name="Estatus"
-                   Padding="10"                    
+            <Label Padding="10"                    
                    HorizontalOptions="Center" 
                    FontSize="22"                    
-                   Text="{Binding Status, Mode=TwoWay}" 
+                   Text="{Binding Status}" 
                    TextColor="{Binding ColorText, Converter = {StaticResource ColorConverter}}"/>
             
             <Image

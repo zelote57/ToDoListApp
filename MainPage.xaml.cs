@@ -4,46 +4,26 @@ namespace ToDoListApp
 {
     public partial class MainPage : ContentPage
     {
-        public Tasks MyTask { get; set; }
+        //public Tasks MyTask { get; set; }
+
+        Tasks MiTarea = new Tasks();
 
         public MainPage()
         {
             InitializeComponent();
             CreateOneTask();
-            BindingContext = MyTask;
+            BindingContext = MiTarea;
         }
 
         private void CreateOneTask()
         {
-            MyTask = new Tasks()
+            MiTarea = new Tasks()
             {
                 TaskName = "Comprar Pan",
                 Status = "Pendiente",
                 ColorText = "Blue"
             };
         }
-
-        //private void CreateAndLoadTaks()
-        //{
-        //    MyTasks = new ObservableCollection<Tasks>
-        //    {
-        //        new Tasks
-        //        {
-        //            TaskName = "Pasear al Perro",
-        //            Status = "Pendiente"
-        //        },
-        //        new Tasks
-        //        {
-        //            TaskName = "Salir a Correr",
-        //            Status = "Pendiente"
-        //        },
-        //        new Tasks
-        //        {
-        //            TaskName = "Entregar Tareas U",
-        //            Status = "Completada"
-        //        }
-        //    };
-        //}
 
         protected override void OnAppearing()
         {
@@ -53,22 +33,9 @@ namespace ToDoListApp
 
         private void AddBtn_Clicked(object sender, EventArgs e)
         {
-            //MyTask.TaskName = "Terminar la Clase";
-
-            //DisplayAlert("Alert", "Agregado", "OK");
-
-            var MyNewTask = new Tasks()
-            {
-                TaskName = "Estudiar",
-                Status = "Pendiente",
-                ColorText = "Red"
-            };
-
-            MyNewTask.TaskName = "Terminar la Clase";
-            MyNewTask.Status = "Completado";
-
-            BindingContext = MyNewTask;
-
+            MiTarea.TaskName = "Otra Tarea";
+            MiTarea.Status = "Completa";
+            MiTarea.ColorText = "Red";
         }
     }
 }
