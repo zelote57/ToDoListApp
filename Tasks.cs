@@ -14,25 +14,16 @@ namespace ToDoListApp
             get => taskName; set
             {
                 taskName = value;
-                this.OnPropertyChanged("TaskName");
+                OnPropertyChanged();
             }
         }
-
-        //public string TaskName
-        //{
-        //    get => taskName; set
-        //    {
-        //        taskName = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
 
         public string Status
         {
             get => status; set
             {
                 status = value;
-                this.OnPropertyChanged(nameof(Status));
+                OnPropertyChanged();
             }
         }
         public string ColorText
@@ -40,7 +31,7 @@ namespace ToDoListApp
             get => colorText; set
             {
                 colorText = value;
-                this.OnPropertyChanged(nameof(ColorText));
+                OnPropertyChanged();
             }
         }
 
@@ -50,16 +41,10 @@ namespace ToDoListApp
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(string propName)
+        protected void OnPropertyChanged([CallerMemberName] string propName = null)
         {
-            this.PropertyChanged?.Invoke(this, 
-                new PropertyChangedEventArgs(propName));
+            PropertyChanged?.Invoke(this,
+                 new PropertyChangedEventArgs(propName));
         }
-
-        //protected void OnPropertyChanged([CallerMemberName] string propName = null)
-        //{
-        //    PropertyChanged?.Invoke(this,
-        //         new PropertyChangedEventArgs(propName));
-        //}
     }
 }
