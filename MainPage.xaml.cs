@@ -1,41 +1,38 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ToDoListApp
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
-        //public Tasks MyTask { get; set; }
-
-        Tasks MiTarea = new Tasks();
+        public ObservableCollection<Tasks> Tareas { get; set; } = new ObservableCollection<Tasks>();
 
         public MainPage()
         {
             InitializeComponent();
             CreateOneTask();
-            BindingContext = MiTarea;
+            BindingContext = this;
         }
 
         private void CreateOneTask()
         {
-            MiTarea = new Tasks()
+            var MiTarea = new Tasks()
             {
                 TaskName = "Comprar Pan",
                 Status = "Pendiente",
                 ColorText = "Blue"
             };
-        }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            //CreateAndLoadTaks();
+            Tareas.Add(MiTarea);
         }
-
         private void AddBtn_Clicked(object sender, EventArgs e)
         {
-            MiTarea.TaskName = "Otra Tarea";
-            MiTarea.Status = "Completa";
-            MiTarea.ColorText = "Red";
+            Tareas.Add(new Tasks()
+            {
+                TaskName = "Estudiar",
+                Status = "Pendiente",
+                ColorText = "Blue"
+            });
         }
     }
 }
